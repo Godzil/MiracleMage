@@ -1,48 +1,48 @@
-2001/04/18 version 0.33
-  - MingW32 �ł̃R���p�C���B
-  - ��񐅏��̈ꕔ�̊������\���ł��Ȃ������o�O���C���B
-  - text_get_font �������B
-  - Windows98/Me �ŃE�B���h�E�̃��T�C�Y�����܂������Ȃ��o�O���C��(�ł����Ǝv��)�B
+﻿2001/04/18 version 0.33
+  - MingW32 でのコンパイル。
+  - 第二水準の一部の漢字が表示できなかったバグを修正。
+  - text_get_font を実装。
+  - Windows98/Me でウィンドウのリサイズがうまくいかないバグを修正(できたと思う)。
 
 2001/04/13 version 0.32
-  - 2 bytes �������܂񂾕�����̕\���ɖ�肪�������̂��C���B
-  - 80186 �G�~�����[�V�����̈ꕔ���C��(�܂���������o�O�����肻��)�B
+  - 2 bytes 文字を含んだ文字列の表示に問題があったのを修正。
+  - 80186 エミュレーションの一部を修正(まだたくさんバグがありそう)。
 
 2001/04/12 version 0.31
-  - �b�����t�H���g��ǂݍ��݂� 2bytes �����\���Ή��B
-  - version0.30 �Ńt�@�C���V�X�e�����S�R�����Ȃ��Ȃ��Ă��̂��C���B
+  - 恵梨沙フォントを読み込みと 2bytes 文字表示対応。
+  - version0.30 でファイルシステムが全然動かなくなってたのを修正。
 
 2001/04/08 version 0.30
-  - FsIL �� creat�Aunlink ���������B
-  - FsIL open ���ɑ��݂��Ȃ��t�@�C�����w�肵���Ƃ��Ƀt�@�C�����쐬����悤�ύX�����B
-  - �e�L�X�g��ʂŃp���b�g�̐ݒ�𕶎��`�掞���� text_screen_init�Atext_window_init�Atest_set_palette ���ɕύX�����B
-  - �c��ʃ��[�h��ǉ������B
-  - LCD �Z�O�����g���X�e�[�^�X�o�[�ɕ\������悤�ɂ��Alcd_set_segments�Alcd_get_segments �����������B
-  - �ݒ��ʂ�ǉ������B
-  - ���̑� bug fix�B
+  - FsIL の creat、unlink 実装した。
+  - FsIL open 時に存在しないファイルを指定したときにファイルを作成するよう変更した。
+  - テキスト画面でパレットの設定を文字描画時から text_screen_init、text_window_init、test_set_palette 時に変更した。
+  - 縦画面モードを追加した。
+  - LCD セグメントをステータスバーに表示するようにし、lcd_set_segments、lcd_get_segments を実装した。
+  - 設定画面を追加した。
+  - その他 bug fix。
 
 2001/03/14 version 0.20
-  - FsIL �̎����B�܂��b��g�p�Ńe�X�g���s�\���ł��Bcreat�Aunlink�Ammap �͖������ł��B
-  - ��ʕ\������̃o�O�C��(thanks ���낳��)�B
-  - �R�}���h���C�������ɑΉ������B
-  - Windows �̃R�}���h���C������t�@�C�����ƈ������w��ł���悤�ɂ����B
-  - ���łɃt�@�C���h���b�v�ɑΉ������B
-  - �E�B���h�E���A�N�e�B�u�łȂ��Ƃ��� CPU ��H��Ȃ��悤�ɂ����B
-  - key_wait() ���� busy-wait ����̂���߂�(���荞�݃x�[�X�ɂȂ����킯�ł͂Ȃ�)�B
+  - FsIL の実装。まだ暫定使用でテストも不十分です。creat、unlink、mmap は未実装です。
+  - 画面表示周りのバグ修正(thanks うつろさん)。
+  - コマンドライン引数に対応した。
+  - Windows のコマンドラインからファイル名と引数を指定できるようにした。
+  - ついでにファイルドロップに対応した。
+  - ウィンドウがアクティブでないときに CPU を食わないようにした。
+  - key_wait() 内で busy-wait するのをやめた(割り込みベースになったわけではない)。
  
 2001/02/17 version 0.10
- ���J���͂��߂��BWWGP2001 ����o�[�W�����ɔ�ׁA���삷��\�t�g�͌��\�������B
- �ύX�_�͈ȉ��̒ʂ�B
-  - 80186 ���߂���������(���M�Ȃ�)�B
-  - �f�o�C�X�R���e�L�X�g�o�R�̕`�����߂��B
-  - �L�[���͂� DirectInput ���g���悤�ɂ����B
-  - TEXT_PUT_NUMERIC �Ő������`�悳��Ȃ��o�O���C������(break ���t���Y��Ă��̂�Ώ�)�B
-  - IlibIL�AProcIL�AFsIL �����s�ł���d�g�݂ɂ���(���g�͂܂�)�B
-  - ���̑��A�ׂ��� bug fix�B
+ 公開をはじめた。WWGP2001 応募バージョンに比べ、動作するソフトは結構増えた。
+ 変更点は以下の通り。
+  - 80186 命令を実装した(自信なし)。
+  - デバイスコンテキスト経由の描画をやめた。
+  - キー入力に DirectInput を使うようにした。
+  - TEXT_PUT_NUMERIC で数字が描画されないバグを修正した(break 文付け忘れてたのを対処)。
+  - IlibIL、ProcIL、FsIL を実行できる仕組みにした(中身はまだ)。
+  - その他、細かい bug fix。
 
 2001/01/31 version 0.01
- WWGP2001 �ɏo���Ă݂�(���ʂ͗\�I�����A�͂�)�B
- ���\�Ђǂ��o���������B
+ WWGP2001 に出してみる(結果は予選落ち、はは)。
+ 結構ひどい出来だった。
 
 -- 
 Copyright (C) 2001 Tomoyuki 'ZRY' Nakano
